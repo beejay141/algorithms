@@ -19,8 +19,10 @@ class Tree{
     }
 
     breathFirstTraversal(fn){
+        // take the start of the node and add to a empty array
         const arr = [this.root];
 
+        //while the counter array is not empty, push children of the [0] back to the array.
         while (arr.length) {
             const node = arr.shift();
             arr.push(...node.children);
@@ -29,8 +31,10 @@ class Tree{
     }
 
     depthFirstTraversal(fn){
+        // take the start of the node and add to a empty array
         const arr = [this.root];
 
+        //while the counter array is not empty, push children of the [0] to the front of the array.
         while (arr.length) {
             const node = arr.shift();
             arr.unshift(...node.children);

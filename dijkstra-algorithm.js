@@ -40,6 +40,7 @@ function dijkstra(graph) {
 }
 
 function FindShortNextNode(weights, processed) {
+    // get key of the know nodes
     let keys = Object.keys(weights)
     
     let lowestWeightNode = keys.reduce((lowest,node)=>{
