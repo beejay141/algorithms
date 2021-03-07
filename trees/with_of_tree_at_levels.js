@@ -22,7 +22,7 @@ function levelWidth(root) {
         const node = queue.shift(); // remove and return first element of the queue
 
         if (node === 's') { // s denote end of each level
-            
+
             queue.push('s');
 
             widths.push(0); // push counter for the next level into the result array
@@ -34,4 +34,5 @@ function levelWidth(root) {
             widths[widths.length-1]++; // increament the current level counter
         }
     }
+    return widths;
 }
