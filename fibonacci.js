@@ -1,4 +1,3 @@
-
 // function fibonacci(n) {
 //     const result = [0,1];
 //     for (let i = 2; i <=n; i++) {
@@ -16,26 +15,41 @@
 // }
 
 // memoization
-function fibonacci(n){
-   if (n<2) {
-       return n;
-   }
 
-   return fibonacci(n-1)+fibonacci(n-2);
+
+function fibonacci(n) {
+    if (n < 2) {
+        return n;
+    }
+
+    return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 function memoize(fu) {
-    const cache={};
-    return function(...args){
-        if (cache[args]) {
-            return cache[args]
+    const cache = {};
+    return function (n) {
+        if (cache[n]) {
+            return cache[n];
         }
-        const result = fu.apply(this,args);
-        cache[args]= result;
+        const result = fu(n);
+        cache[n] = result;
         return result;
     }
 }
 
 fibonacci = memoize(fibonacci)
 
-console.log(fibonacci(100))
+console.log(fibonacci(1000))
+
+
+// function memoize(fu) {
+//     const cache={};
+//     return function(...args){
+//         if (cache[args]) {
+//             return cache[args]
+//         }
+//         const result = fu.apply(this,args);
+//         cache[args]= result;
+//         return result;
+//     }
+// }

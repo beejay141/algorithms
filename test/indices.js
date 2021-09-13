@@ -9,8 +9,7 @@ function getallindices(A=[]) {
     }
 
     let elements = Object.keys(count);
-    console.log(count);
-    for (const elem of elements) {
+    for (const elem in count) {
         if(count[elem] > 1){
             let size = count[elem];
             result+= ((factorial(size)/factorial(size-2))/2);
@@ -19,7 +18,7 @@ function getallindices(A=[]) {
     return result;
 }
 
-let cache = [];
+let cache = {};
 
 function factorial(n){
     if(n<=1) return 1;

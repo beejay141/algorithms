@@ -11,6 +11,7 @@ function bubbe_sort(arr){
                 }
             }
     }
+    return arr;
 }
 
 //prove me wrong algo
@@ -23,7 +24,7 @@ function selection_sort(arr){
         for (let j = i+1; j < array.length; j++) {
         // if j element is lesser that element at min
           if (arr[j] < arr[minIndex]) {
-              minIndex = j; // update the current min
+              minIndex = j; // update the current min index.
           }
         }
 
@@ -34,6 +35,7 @@ function selection_sort(arr){
             arr[i] = temp;
         }
     }
+    return arr;
 }
 
 
@@ -63,3 +65,8 @@ function merge(left,right) {
 
     return [...results,...left,...right];
 }
+
+
+
+
+console.log(bubbe_sort([4,6,12,564,21,2,5,23]))

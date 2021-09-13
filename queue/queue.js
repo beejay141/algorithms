@@ -1,21 +1,19 @@
 class Queue {
-
-    constructor(){
+    constructor() {
         this.items = [];
     }
 
-    add(item){
-       this.items.unshift(item);
+    add(item) {
+        this.items.unshift(item);
     }
 
-    pop(){
+    remove() {
         this.items.pop();
     }
 
-    peep(){
-        return this.items[this.items.length-1];
+    peep() {
+        return this.items[this.items.length - 1];
     }
 }
 
 module.exports = Queue
-

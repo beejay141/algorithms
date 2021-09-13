@@ -1,8 +1,8 @@
 function dijkstra(graph) {
     //  to keep the visited nodes
-    let processed = [];
+    let visited = [];
     //  known nodes from start node
-    let weights = Object.assign({},graph.start);
+    let edges = Object.assign({},graph.start);
     //  to keep track of the path
     let parents = {
         finish: null
@@ -13,21 +13,21 @@ function dijkstra(graph) {
     }
 
 
-    let node = FindShortNextNode(weights, processed);
+    let node = FindShortNextNode(edges, visited);
 
     while (node) {
-        let weight = weights[node];
+        let edge = edges[node];
         let neighbors = graph[node];
 
         for (const n in neighbors) {
-            let newWeight = weight + neighbors[n];
-            if (!weights[n] || newWeight < weights[n]) {
-                weights[n] = newWeight;
+            let newWeight = edge + neighbors[n];
+            if (!edges[n] || newWeight < edges[n]) {
+                edges[n] = newWeight;
                 parents[n] = node;
             }
         }
-        processed.push(node);
-        node = FindShortNextNode(weights,processed)
+        visited.push(node);
+        node = FindShortNextNode(edges,visited)
     }
 
     let optimalPath = ['finish'];
@@ -39,14 +39,14 @@ function dijkstra(graph) {
     return optimalPath;
 }
 
-function FindShortNextNode(weights, processed) {
+function FindShortNextNode(edges, visited) {
     // get key of the know nodes
-    let keys = Object.keys(weights)
+    let keys = Object.keys(edges)
     
     let lowestWeightNode = keys.reduce((lowest,node)=>{
-        if (lowest === null && !processed.includes(node)) {
+        if (lowest === null && !visited.includes(node)) {
             lowest = node
-        }else if(weights[node] < weights[lowest] && !processed.includes(node)){
+        }else if(edges[node] < edges[lowest] && !visited.includes(node)){
             lowest = node;
         }
         return lowest;

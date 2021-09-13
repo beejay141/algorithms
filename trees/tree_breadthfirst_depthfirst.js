@@ -1,6 +1,6 @@
 class Node {
     constructor(data){
-        this.data;
+        this.data = data;
         this.children = [];
     }
 
@@ -42,3 +42,8 @@ class Tree{
         }
     }
 }
+
+let node = new Node(1);
+// tree witl have one root and many branches
+let tree = new Tree();
+tree.root = node;

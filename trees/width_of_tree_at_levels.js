@@ -1,6 +1,11 @@
+/*
+write a function the return array of a tree level with
+
+*/
+
 class Node {
     constructor(data) {
-        this.data;
+        this.data = data;
         this.children = [];
     }
 

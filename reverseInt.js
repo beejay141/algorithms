@@ -1,7 +1,7 @@
 
 
 function reserveNumber(params) {
-    return parseInt(params.toString().split('').reduce((output,current)=>{
+    return parseInt(params.toString().split('').reduce((output,current,index,arr)=>{
         if (output) {
             return current+output
         }

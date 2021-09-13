@@ -1,57 +1,60 @@
-class Node{
-    constructor(data,next=null){  
+// Implement class Node and Class Linked ListList
+class Node {
+    constructor(data, next = null) {
         this.data = data;
         this.next = next;
     }
-
-    
 }
 
 class LinkList {
-    constructor(){
+    constructor() {
         this.head = null;
     }
 
 
-    Insert(data){
-        this.head = new Node(data,this.head);
+    Insert(data) {
+        this.head = new Node(data, this.head);
     }
 
-    Size(){
-        let count =0
+    Size() {
+        let count = 0
         let node = this.head;
-        while(node){
+        while (node) {
             count++;
             node = node.next;
         }
         return count;
     }
 
-    GetFirst(){
+    GetFirst() {
         return this.head;
     }
 
-    GetLast(){
+    GetLast() {
         let node = this.head;
-        if(!node)return node;
+        if (!node) return node;
+
         while (node.next) {
             node = node.next;
         }
         return node;
     }
 
-    Clear(){
+    Clear() {
         this.head = null;
     }
 
-    RemoveFirst(){
-        if(!this.head)return null;
+    RemoveFirst() {
+        if (!this.head) return null;
         this.head = this.head.next;
     }
 
-    RemoveLast(){
-        if(!this.head)return null;
-        if(!this.head.next)this.head = null;
+    RemoveLast() {
+        if (!this.head) return null;
+        if (!this.head.next) {
+            this.head = null
+            return;
+        };
 
         let node = this.head.next;
         let prev = this.head;
@@ -63,21 +66,20 @@ class LinkList {
         prev.next = null;
     }
 
-    InserLast(data){
+    InserLast(data) {
         let last = new Node(data);
         let curLast = this.GetLast();
 
-        if(curLast){
+        if (curLast) {
             // there are some existing data in the node
-            curLast.next =  last
-        }else{
+            curLast.next = last
+        } else {
             // the chain is empty
             this.head = last;
         }
     }
 
-    GetAt(index){
-        // if (!this.head)null;
+    GetAt(index) {
         let count = 0;
         let node = this.head;
 
@@ -88,41 +90,54 @@ class LinkList {
         return node;
     }
 
-    RemoveAt(index){
-        if(!this.head || index < 0) return null;
-        
-        if (index === 0){
+    RemoveAt(index) {
+        if (!this.head || index < 0) return null;
+
+        if (index === 0) {
             this.head = this.head.next;
+            return;
         }
 
-        const prev = this.GetAt(index-1);
+        const prev = this.GetAt(index - 1);
         if (!prev || !prev.next) {
             return;
         }
         prev.next = prev.next.next;
     }
 
-    InsertAt(index, data){
-        
+    InsertAt(index, data) {
+
         if (!this.head) {
             this.head = new Node(data);
+            return;
         }
 
         if (index <= 0) {
             let newNode = new Node(data);
             newNode.next = this.head;
             this.head = newNode;
+            return;
         }
 
-        const prev = this.GetAt(index-1) || this.GetLast();
-        const node = new Node(data,prev.next);
+        const prev = this.GetAt(index - 1) || this.GetLast();
+        const node = new Node(data, prev.next);
         prev.next = node;
-        
+
     }
 
-    // Foreach(func)
+    Foreach(func) {
+        if (!this.head) return;
 
-    MidPoint(list){
+        let node = this.head;
+        let count = 0;
+        while (node) {
+            func(node, count);
+            node = node.next;
+            count++;
+        }
+    }
+
+    MidPoint(list) {
         // assign head of the list to slow and fast
 
         // slow move one node at a time.
@@ -130,7 +145,7 @@ class LinkList {
         // fast moves two nodes at a time.
         let fast = list.GetFirst();
 
-        // while there is node next node for fast, move the slow and fast node .
+        // while there is node 'next' node for fast, move the slow and fast node .
         while (fast.next && fast.next.next) {
             slow = slow.next;
             fast = fast.next.next;
@@ -147,6 +162,12 @@ node.Insert(4);
 node.Insert(5);
 node.Insert(8);
 node.Insert(9);
+
+node.Foreach((node,index)=>{
+    node.data*=100;
+})
+
+console.log(node.head);
 
 console.log(node.Size())
 // console.log()

@@ -6,11 +6,11 @@ function Weave(Q1,Q2) {
     while (Q1.peek() || Q2.peek()) {
         
         if (Q1.peek()) {
-            Q3.push(Q1.pop())
+            Q3.add(Q1.pop())
         }
 
         if (Q2.peek()) {
-            Q3.push(Q2.pop())
+            Q3.add(Q2.pop())
         }
     }
 

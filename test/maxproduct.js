@@ -32,4 +32,11 @@ function memoizedProd(pp=[]){
     return start * cache[pp];
 }
 
-console.log(maxProduct([3,5,1,2,5,7,8,9,4]))
+// console.log(maxProduct([3,5,1,2,5,7,8,9,4]))
+
+function factorial(n){
+    if(n === 1) return 1;
+    return n * factorial(n-1);
+}
+
+console.log(factorial(500));

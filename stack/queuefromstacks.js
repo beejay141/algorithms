@@ -20,7 +20,7 @@ class Queue {
 
         const item = this.S2.pop();
 
-        while (this.S2.pop()) {
+        while (this.S2.peek()) {
             this.S1.push(this.S2.pop())
         }
 
@@ -34,7 +34,7 @@ class Queue {
 
         const item = this.S2.peek();
 
-        while (this.S2.pop()) {
+        while (this.S2.peek()) {
             this.S1.push(this.S2.pop())
         }
 
