@@ -2,7 +2,7 @@ function dijkstra(graph) {
     //  to keep the visited nodes
     let visited = [];
     //  known nodes from start node
-    let edges = Object.assign({},graph.start);
+    let edges = {...graph.start};
     //  to keep track of the path
     let parents = {
         finish: null
@@ -43,16 +43,16 @@ function FindShortNextNode(edges, visited) {
     // get key of the know nodes
     let keys = Object.keys(edges)
     
-    let lowestWeightNode = keys.reduce((lowest,node)=>{
+    let lowest = null;
+    for(let node of keys){
         if (lowest === null && !visited.includes(node)) {
             lowest = node
         }else if(edges[node] < edges[lowest] && !visited.includes(node)){
             lowest = node;
         }
-        return lowest;
-    },null);
+    }
 
-    return lowestWeightNode;
+    return lowest;
 }
 
 console.log("result", dijkstra({
