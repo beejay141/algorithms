@@ -16,6 +16,17 @@
 
 // memoization
 
+// function memoize(fu) {
+//     const cache = {};
+//     return function (n) {
+//         if (cache[n]) {
+//             return cache[n];
+//         }
+//         const result = fu(n);
+//         cache[n] = result;
+//         return result;
+//     }
+// }
 
 function fibonacci(n) {
     if (n < 2) {
@@ -26,20 +37,20 @@ function fibonacci(n) {
 }
 
 function memoize(fu) {
-    const cache = {};
-    return function (n) {
-        if (cache[n]) {
-            return cache[n];
+    const cache={};
+    return function(...args){
+        if (cache[args]) {
+            return cache[args]
         }
-        const result = fu(n);
-        cache[n] = result;
+        const result = fu.apply(this,args);
+        cache[args]= result;
         return result;
     }
 }
 
 fibonacci = memoize(fibonacci)
 
-console.log(fibonacci(1000))
+console.log(fibonacci(6))
 
 
 // function memoize(fu) {
