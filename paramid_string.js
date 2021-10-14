@@ -21,7 +21,7 @@ function pyramid(n) {
 
 
 function pyramidRecursion(n,row=0,level='') {
-    if(n == 0 || n==row) return;
+    if(n==row) return;
     let numberOfColumn = (n * 2) - 1;//9
     let midpoint = Math.floor(numberOfColumn/2); //4
 
@@ -41,4 +41,4 @@ function pyramidRecursion(n,row=0,level='') {
 
 
 
-pyramidRecursion(5);
+pyramidRecursion(6);

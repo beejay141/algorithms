@@ -1,5 +1,5 @@
 /*we have to use concept of next greater elem. but what we'll be doing is next small element*/
-function findLargestRectangleInHistogram(arr = []) {
+function findLargestRectangleInHistogram(row = []) {
     let maxArea = 0;
 
     let i = 0;
@@ -7,7 +7,7 @@ function findLargestRectangleInHistogram(arr = []) {
     let stack = [];
 
     while (i < columns) {
-        /*push to stack if the current is taller than the previous. we've only reach the left 
+        /*push to stack if the current is taller than the previous. else we've reach the left 
         boundry if the current is shorter _-|-_*/
         if (stack.length === 0 || row[stack[stack.length - 1]] <= row[i]) {
             stack.push(i);
