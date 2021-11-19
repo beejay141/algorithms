@@ -5,14 +5,14 @@ const {
 
 
 function MergeSort(arr = []) {
-    if (arr.length <= 1) return arr;
-
     const { length } = arr;
+
+    if (length <= 1) return arr;
 
     let middle = Math.floor(length-1 / 2);
 
     let left = MergeSort(arr.slice(0, middle));
-    let right = MergeSort(arr.slice(middle, length));
+    let right = MergeSort(arr.slice(middle));
 
     arr = Merge(left, right);
     return arr;
@@ -24,8 +24,18 @@ function Merge(left = [], right = []) {
     let result = [];
 
     while (i < left.length && j < right.length) {
-        result.push(defaultCompare(left[i], right[j]) == Compare.LESS_THAN ? left[i++] : right[j++]);
+        if(left[i]< right[j])
+        {
+            result.push(left[i])
+            i++
+        }else{
+            result.push(right[j])
+            j++
+        }
+        // result.push(defaultCompare(left[i], right[j]) == Compare.LESS_THAN ? left[i++] : right[j++]);
     }
+    
+    /*because we're pushing one at a time, there will always be lelft-over of one of the arrays*/
     return result.concat(i < left.length ? left.slice(i) : right.slice(j));
 }
 

@@ -74,6 +74,20 @@ function Validate(node, min=null,max=null){
     return false;
 }
 
+
+function ValidateSimple(node, min=-Infinity,max=Infinity){
+    if(node === null) return true;
+
+
+    if(node.data < min || node.data >= max) return false;
+
+    let leftValidate = Validate(node.left,min,node.data)
+
+    let rightValid = Validate(node.right,node.data,max)
+
+    return leftValidate && rightValid;
+}
+
 const node = new Node(12);
 node.Insert(6);
 node.Insert(13);
