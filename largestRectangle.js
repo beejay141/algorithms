@@ -8,7 +8,7 @@ function findLargestRectangleInHistogram(row = []) {
 
     while (i < columns) {
         /*push to stack if the current is taller than the previous. else we've reach the left 
-        boundry if the current is shorter _-|-_*/
+        boundry, if the current is shorter _-|-_*/
         if (stack.length === 0 || row[stack[stack.length - 1]] <= row[i]) {
             stack.push(i);
             i++;
